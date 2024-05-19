@@ -1,0 +1,39 @@
+#Question 1:
+
+
+#Question 2:
+
+
+#Question 3:
+#A:
+
+class Circle():
+    def __init__(self, point, center, ray):
+        self.coordenates = point
+        self.raio = ray
+        self.centro = center
+    
+    def findpoint(self):
+        x = self.coordenates[0] 
+        y = self.coordenates[1] 
+        r = self.raio 
+        x0 = self.centro[0]
+        y0 = self.centro[1]
+
+        if (x-x0)**2 + (y-y0)**2 == r**2:
+            return "Point in circle"
+            
+        elif (x-x0)**2 + (y-y0)**2 > r**2:
+            return "The point is outside on circle"
+            
+        else:
+            return "The point is inside on circle"
+    
+        
+result = Circle((4, 5), (1, 1), 5) 
+result.findpoint()
+print(result.findpoint())
+
+
+#B:
+
