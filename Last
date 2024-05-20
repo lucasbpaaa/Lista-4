@@ -1,7 +1,36 @@
-#Question 1:
-
-
 #Question 2:
+#Código corrijdo:
+class Vector():
+  def __init__(self, values):
+
+    self.values = values
+    self.dim = len(self.values)
+
+  def add( self, other_vector):
+
+        if other_vector.dim != self.dim:
+            return []
+        new_vector = [0] * self.dim
+        for i in range(self.dim):
+            new_vector[i] = self.values[i] + other_vector.values[i]
+        return new_vector
+
+v = Vector([0.0 , 2.0 , 3.5 ])
+u = Vector([1.0, 0.5])
+w = Vector([2.0, 1.5])
+print(v.add(u))
+print(u.add(w))
+
+#Alternativa a: 
+#A troca do __ints__ na linha 2 por __init__.
+#A troca de new_vector[i] = self.values[i] + self.values[i] por new_vector[i] = self.values[i] + other_vector.values[i] na linha 20.
+
+
+#Alternativa b: 
+#[]
+#[3.0, 2.0]
+
+
 
 
 #Question 3:
@@ -19,6 +48,9 @@ class Circle():
         r = self.raio 
         x0 = self.centro[0]
         y0 = self.centro[1]
+#(x, y) é o ponto de estudo
+#(x0, y0) são as coordenadas do centro da circunferência de raio ray 
+#Usando a equação da circunferência, temos:
 
         if (x-x0)**2 + (y-y0)**2 == r**2:
             return "Point in circle"
@@ -36,4 +68,37 @@ print(result.findpoint())
 
 
 #B:
+
+class Line_Segment():
+    def __init__(self, pointA, pointC, pointB):
+        self.pointA = pointA
+        self.pointB = pointB
+        self.pointC = pointC
+    
+    def pointinsegment(self):
+        # Calcula o vetor AB e AC
+        AB = (self.pointB[0] - self.pointA[0], self.pointB[1] - self.pointA[1])
+        AC = (self.pointC[0] - self.pointA[0], self.pointC[1] - self.pointA[1])
+
+        # Produto escalar de AB e AC
+        dot_product = AB[0] * AC[0] + AB[1] * AC[1]
+        AB_squared_length = AB[0] * AB[0] + AB[1] * AB[1]
+
+        # Calcula o valor de u
+        u = dot_product / AB_squared_length
+
+        # Verifica se o ponto C está dentro do segmento AB e se u está entre 0 e 1
+        if 0 <= u <= 1:
+            return "Point in segment AB"
+        else:
+            return "Point is outside of segment AB"
+
+# Exemplo de uso
+A = (1, 1)
+B = (3, 3)
+C = (2, 2)
+
+result = Line_Segment(A, C, B)
+print(result.pointinsegment())
+
 
